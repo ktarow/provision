@@ -37,6 +37,13 @@ BREW_CASK_PACKAGES.each do |pkg|
   execute "brew cask install #{pkg}"
 end
 
+execute 'for alfred' do
+  command <<-EOS
+    brew cask alfred link
+  EOS
+  only_if 'test -d /opt/homebrew-cask/Caskroom/alfred'
+end
+
 execute 'Change a login shell' do
   command <<-EOS
     sudo sh -c "echo '/usr/local/bin/zsh' >> /etc/shells"
