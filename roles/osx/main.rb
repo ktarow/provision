@@ -36,6 +36,15 @@ BREW_CASK_PACKAGES.each do |pkg|
   execute "brew cask install #{pkg}"
 end
 
+execute 'Change a login shell' do
+  command <<-EOS
+    sudo sh -c "echo '/usr/local/bin/zsh' >> /etc/shells"
+    chsh -s /usr/local/bin/zsh
+  EOS
+
+  not_if 'grep "/usr/local/bin/zsh" /etc/shells'
+end
+
 git "#{ENV['HOME']}/dotfiles" do
   repository 'git@github.com:ktarow/dotfiles'
 
