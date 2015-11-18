@@ -32,6 +32,7 @@ BREW_PACKAGES.each do |pkg|
   execute "brew install #{pkg}"
 end
 
+execute 'export HOMEBREW_CASK_OPTS="--appdir=/Applications"'
 BREW_CASK_PACKAGES.each do |pkg|
   execute "brew cask install #{pkg}"
 end
