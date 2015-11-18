@@ -35,3 +35,9 @@ end
 BREW_CASK_PACKAGES.each do |pkg|
   execute "brew cask install #{pkg}"
 end
+
+git "#{ENV['HOME']}/dotfiles" do
+  repository 'git@github.com:ktarow/dotfiles'
+
+  not_if "test -d '#{ENV['HOME']}/dotfiles'"
+end
