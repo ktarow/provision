@@ -29,7 +29,9 @@ execute 'ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/instal
 end
 
 BREW_PACKAGES.each do |pkg|
-  execute "brew install #{pkg}"
+  execute "brew install #{pkg}" do
+    only_if "brew info #{ pkg } | grep -qi 'Not Installed'"
+  end
 end
 
 execute 'export HOMEBREW_CASK_OPTS="--appdir=/Applications"'
