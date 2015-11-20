@@ -30,13 +30,17 @@ end
 
 BREW_PACKAGES.each do |pkg|
   execute "brew install #{pkg}" do
-    only_if "brew info #{ pkg } | grep -qi 'Not Installed'"
+    only_if "brew info #{pkg} | grep -qi 'Not Installed'"
   end
 end
 
-execute 'export HOMEBREW_CASK_OPTS="--appdir=/Applications"'
 BREW_CASK_PACKAGES.each do |pkg|
-  execute "brew cask install #{pkg}"
+  execute "install cask" do
+    command <<-EOS
+      export HOMEBREW_CASK_OPTS="--appdir=/Applications"
+      brew cask install #{pkg}
+    EOS
+  end
 end
 
 execute 'for alfred' do
