@@ -7,7 +7,13 @@ YUM_PACKAGES = [
   'git',
   'tmux',
   'ncurses-devel',
-  'zsh'
+  'zsh',
+  'curl-devel',
+  'expat-devel',
+  'gettext-devel',
+  'openssl-devel',
+  'zlib-devel',
+  'perl-ExtUtils-MakeMaker'
 ]
 
 execute 'yum -y update'
@@ -40,3 +46,15 @@ end
 
 # zsh
 execute "chsh -s /bin/zsh #{node[:user]}"
+
+# git
+git '/usr/local/src/git' do
+  repository 'git://git.kernel.org/pub/scm/git/git.git'
+end
+execute 'install git' do
+  command <<-EOS
+    cd /usr/local/src/git
+    make prefix=/usr/local all
+    make prefix=/usr/local install
+  EOS
+end
