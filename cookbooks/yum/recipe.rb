@@ -6,7 +6,8 @@ YUM_GROUP_PACKAGES = [
 YUM_PACKAGES = [
   'git',
   'tmux',
-  'ncurses-devel'
+  'ncurses-devel',
+  'zsh'
 ]
 
 execute 'yum -y update'
@@ -36,3 +37,6 @@ execute 'install vim' do
     make && make install
   EOS
 end
+
+# zsh
+execute "chsh -s /bin/zsh #{node[:user]}"
