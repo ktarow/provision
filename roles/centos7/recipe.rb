@@ -1,5 +1,11 @@
 include_recipe '../../cookbooks/yum/recipe.rb'
 include_recipe '../../cookbooks/commands/recipe.rb'
+include_recipe '../../cookbooks/rbenv/recipe.rb'
+
+RBENV_ROOT = '/usr/local/rbenv'
+
+execute 'source ~/.bashrc'
+execute "echo $PATH"
 
 # zsh
 execute "chsh -s /bin/zsh #{node[:user]}"
@@ -7,4 +13,17 @@ file "/home/#{node[:user]}/.zshrc" do
   owner node[:user]
   group node[:user]
   mode '644'
+end
+
+file "/home/#{node[:user]}/.zshenv" do
+  owner node[:user]
+  group node[:user]
+  mode '644'
+end
+execute "append zshenv" do
+  command <<-EOS
+    echo 'export RBENV_ROOT=#{RBENV_ROOT}' >> /home/#{node[:user]}/.zshenv
+    echo 'export PATH="$RBENV_ROOT/bin:$PATH"' >> /home/#{node[:user]}/.zshenv
+    echo 'eval "$(rbenv init -)"' >> /home/#{node[:user]}/.zshenv
+  EOS
 end

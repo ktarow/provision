@@ -13,6 +13,7 @@ YUM_PACKAGES = [
   'gettext-devel',
   'openssl-devel',
   'zlib-devel',
+  'readline-devel',
   'perl-ExtUtils-MakeMaker'
 ]
 
