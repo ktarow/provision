@@ -18,11 +18,11 @@ PLUGINS.each do |repo, uri|
   end
 end
 
-execute "add /etc/bashrc" do
+execute "add /etc/profile.d/rbenv.sh" do
   command <<-EOS
-    echo 'export RBENV_ROOT=#{RBENV_ROOT}' >> /etc/bashrc
-    echo 'export PATH="$RBENV_ROOT/bin:$PATH"' >> /etc/bashrc
-    echo 'eval "$(rbenv init -)"' >> /etc/bashrc
+    echo 'export RBENV_ROOT=#{RBENV_ROOT}' >> /etc/profile.d/rbenv.sh
+    echo 'export PATH="$RBENV_ROOT/bin:$PATH"' >> /etc/profile.d/rbenv.sh
+    echo 'eval "$(rbenv init -)"' >> /etc/profile.d/rbenv.sh
   EOS
 end
 
@@ -40,4 +40,3 @@ execute "install ruby" do
     rbenv global #{RUBY}
   EOS
 end
-
