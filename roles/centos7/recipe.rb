@@ -1,5 +1,6 @@
 include_recipe '../../cookbooks/yum/recipe.rb'
-include_recipe '../../cookbooks/commands/recipe.rb'
+include_recipe '../../cookbooks/git/recipe.rb'
+include_recipe '../../cookbooks/vim/recipe.rb'
 include_recipe '../../cookbooks/rbenv/recipe.rb'
 include_recipe '../../cookbooks/nvm/recipe.rb'
 include_recipe '../../cookbooks/mysql/recipe.rb'
