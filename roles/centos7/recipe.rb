@@ -1,11 +1,9 @@
 include_recipe '../../cookbooks/yum/recipe.rb'
 include_recipe '../../cookbooks/commands/recipe.rb'
 include_recipe '../../cookbooks/rbenv/recipe.rb'
+include_recipe '../../cookbooks/nvm/recipe.rb'
 
 RBENV_ROOT = '/usr/local/rbenv'
-
-execute 'source ~/.bashrc'
-execute "echo $PATH"
 
 # zsh
 execute "chsh -s /bin/zsh #{node[:user]}"
