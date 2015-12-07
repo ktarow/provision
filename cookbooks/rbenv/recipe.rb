@@ -43,5 +43,5 @@ execute "install ruby" do
     rbenv install #{RUBY}
     rbenv global #{RUBY}
   EOS
-  not_if "ruby -v | grep 2.2.3"
+  not_if "cat /usr/local/rbenv/version | grep #{RUBY}"
 end
