@@ -16,6 +16,6 @@ execute 'install node' do
     nvm use #{VERSION}
     nvm alias default #{VERSION}
   EOS
-  not_if "nvm version | grep #{VERSION}"
+  not_if "cat /usr/local/nvm/alias/default | grep #{VERSION}"
 end
 

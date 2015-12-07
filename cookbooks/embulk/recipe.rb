@@ -5,7 +5,13 @@ execute 'curl embulk' do
   command <<-EOS
     curl --create-dirs -o ~/.embulk/bin/embulk -L 'http://dl.embulk.org/embulk-latest.jar'
     chmod +x ~/.embulk/bin/embulk
-    echo 'export PATH="$HOME/.embulk/bin:$PATH"' >> .zshrc
   EOS
-  not_if 'witch embulk'
+  not_if 'test -d ~/.embulk'
+end
+execute '' do
+  user 'vagrant'
+  command <<-EOS
+    echo 'export PATH="$HOME/.embulk/bin:$PATH"' >> .zshenv
+  EOS
+  not_if 'cat ~/.zshenv | grep .embulk'
 end
