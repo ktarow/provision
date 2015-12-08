@@ -8,7 +8,7 @@ execute 'curl embulk' do
   EOS
   not_if 'test -d ~/.embulk'
 end
-execute '' do
+execute 'export' do
   user 'vagrant'
   command <<-EOS
     echo 'export PATH="$HOME/.embulk/bin:$PATH"' >> .zshenv
