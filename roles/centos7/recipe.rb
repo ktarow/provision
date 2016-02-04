@@ -1,4 +1,5 @@
 include_recipe '../../cookbooks/yum/recipe.rb'
+include_recipe '../../cookbooks/php/recipe.rb'
 include_recipe '../../cookbooks/git/recipe.rb'
 include_recipe '../../cookbooks/vim/recipe.rb'
 include_recipe '../../cookbooks/rbenv/recipe.rb'
@@ -27,5 +28,3 @@ execute "append zshenv" do
     echo 'eval "$(rbenv init -)"' >> /home/#{node[:user]}/.zshenv
   EOS
 end
-
-include_recipe '../../cookbooks/embulk/recipe.rb'
