@@ -30,3 +30,5 @@ PACKAGES.each do |package|
     not_if "yum list installed | grep #{package}"
   end
 end
+
+execute 'curl -sS https://getcomposer.org/installer | php -- --install-dir=/bin --filename=composer'
