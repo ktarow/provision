@@ -4,7 +4,7 @@ BREW_PACKAGES = [
   'vim --override-system-vi --with-lua',
   'zsh',
   'tmux',
-  'caskroom/cask/brew-cask'
+  'brew-cask'
 ]
 
 BREW_CASK_PACKAGES = [
