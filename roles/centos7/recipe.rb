@@ -5,6 +5,7 @@ include_recipe '../../cookbooks/vim/recipe.rb'
 include_recipe '../../cookbooks/rbenv/recipe.rb'
 include_recipe '../../cookbooks/nvm/recipe.rb'
 include_recipe '../../cookbooks/mysql/recipe.rb'
+include_recipe '../../cookbooks/java/recipe.rb'
 
 RBENV_ROOT = '/usr/local/rbenv'
 
