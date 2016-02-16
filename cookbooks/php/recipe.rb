@@ -13,7 +13,8 @@ PACKAGES = [
   'php-msgpack',
   'php-common',
   'php-pecl-xdebug',
-  'php-openssl'
+  'php-openssl',
+  'php-pecl-zip'
 ]
 
 execute 'add remi repository' do
