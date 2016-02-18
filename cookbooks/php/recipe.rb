@@ -33,3 +33,6 @@ PACKAGES.each do |package|
 end
 
 execute 'curl -sS https://getcomposer.org/installer | php -- --install-dir=/bin --filename=composer'
+execute 'composer global require "laravel/installer"' do
+  only_if 'which composer && test ! -e $HOME/.config/composer/vendor/laravel'
+end
