@@ -1,12 +1,12 @@
 # rbenv
-RBENV_ROOT='/usr/local/rbenv'
+RBENV_ROOT='/opt/rbenv'
 PLUGINS = {
   'ruby-build' => 'https://github.com/sstephenson/ruby-build.git',
   'rbenv-default-gems' => 'https://github.com/sstephenson/rbenv-default-gems.git',
   'rbenv-gem-rehash' => 'https://github.com/sstephenson/rbenv-gem-rehash.git'
 }
 
-RUBY='2.2.3'
+RUBY='2.3.0'
 
 git "#{RBENV_ROOT}" do
   repository 'https://github.com/sstephenson/rbenv.git' 
@@ -27,6 +27,7 @@ execute "add /etc/profile.d/rbenv.sh" do
     echo 'eval "$(rbenv init -)"' >> /etc/profile.d/rbenv.sh
   EOS
   not_if 'which rbenv'
+  not_if "echo $RBENV_ROOT | grep #{RBENV_ROOT}"
 end
 
 execute "default-gems" do
@@ -43,5 +44,5 @@ execute "install ruby" do
     rbenv install #{RUBY}
     rbenv global #{RUBY}
   EOS
-  not_if "cat /usr/local/rbenv/version | grep #{RUBY}"
+  not_if "cat #{RBENV_ROOT}/version | grep #{RUBY}"
 end

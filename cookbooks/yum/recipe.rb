@@ -5,6 +5,7 @@ YUM_GROUP_PACKAGES = [
 
 YUM_PACKAGES = [
   'git',
+  'vim',
   'tmux',
   'ncurses-devel',
   'zsh',
@@ -18,10 +19,11 @@ YUM_PACKAGES = [
 ]
 
 execute 'yum -y update'
+
 execute 'add epel repository' do
   command <<-EOS
     yum install -y epel-release
-    sed -i -e 's/enabled=1/enabled=0/' /etc/yum.repos.d/epel.repo
+    sed -ri 's/enabled=1/enabled=0/' /etc/yum.repos.d/epel.repo
   EOS
   not_if 'test -f /etc/yum.repos.d/epel.repo'
 end
