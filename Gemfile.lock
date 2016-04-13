@@ -3,7 +3,7 @@ GEM
   specs:
     ansi (1.5.0)
     hashie (3.4.3)
-    itamae (1.6.3)
+    itamae (1.9.6)
       ansi
       hashie
       schash (~> 0.1.0)
@@ -11,13 +11,13 @@ GEM
       thor
     net-scp (1.2.1)
       net-ssh (>= 2.6.5)
-    net-ssh (2.9.2)
+    net-ssh (3.1.1)
     net-telnet (0.1.1)
     schash (0.1.2)
     sfl (2.2)
-    specinfra (2.44.2)
+    specinfra (2.56.1)
       net-scp
-      net-ssh (~> 2.7)
+      net-ssh (>= 2.7, < 4.0)
       net-telnet
       sfl
     thor (0.19.1)
