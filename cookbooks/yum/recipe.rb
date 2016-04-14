@@ -15,7 +15,8 @@ YUM_PACKAGES = [
   'openssl-devel',
   'zlib-devel',
   'readline-devel',
-  'perl-ExtUtils-MakeMaker'
+  'perl-ExtUtils-MakeMaker',
+  'znc'
 ]
 
 execute 'yum -y update'

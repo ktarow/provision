@@ -4,7 +4,8 @@ BREW_PACKAGES = [
   'vim --override-system-vi --with-lua',
   'zsh',
   'tmux',
-  'brew-cask'
+  'brew-cask',
+  'weechat'
 ]
 
 BREW_CASK_PACKAGES = [
@@ -39,7 +40,7 @@ BREW_PACKAGES.each do |pkg|
 end
 
 BREW_TAP.each do |pkg|
-a execute "brew tap" do
+  execute "brew tap" do
     command <<-EOS
       brew tap #{pkg}
     EOS
@@ -57,11 +58,7 @@ execute 'Change a login shell' do
 end
 
 BREW_CASK_PACKAGES.each do |pkg|
-  execute "install cask" do
-    command <<-EOS
-      brew cask install #{pkg}
-    EOS
-  end
+  execute "brew cask install #{pkg}" do
 end
 
 execute 'for alfred' do
