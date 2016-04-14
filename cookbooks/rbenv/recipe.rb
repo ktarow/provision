@@ -26,8 +26,7 @@ execute "add /etc/profile.d/rbenv.sh" do
     echo 'export PATH="$RBENV_ROOT/bin:$PATH"' >> /etc/profile.d/rbenv.sh
     echo 'eval "$(rbenv init -)"' >> /etc/profile.d/rbenv.sh
   EOS
-  not_if 'which rbenv'
-  not_if "echo $RBENV_ROOT | grep #{RBENV_ROOT}"
+  not_if 'test -f /etc/profile.d/rbenv.sh'
 end
 
 execute "default-gems" do
