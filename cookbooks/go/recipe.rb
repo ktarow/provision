@@ -16,4 +16,4 @@ execute "curl #{URI} -o /tmp/#{FILENAME}" do
   not_if "test -d /tmp/#{FILENAME}"
 end
 
-execute "tar xzf /tmp/#{FILENAME} -C /opt/"
+execute "tar xzf /tmp/#{FILENAME} -C /opt"
