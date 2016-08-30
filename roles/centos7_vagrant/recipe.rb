@@ -1,4 +1,4 @@
-include_recipe '../../cookbooks/yum/recipe.rb'
+include_recipe '../../cookbooks/centos/yum/recipe.rb'
 include_recipe '../../cookbooks/php/recipe.rb'
 include_recipe '../../cookbooks/git/recipe.rb'
 include_recipe '../../cookbooks/vim/recipe.rb'
