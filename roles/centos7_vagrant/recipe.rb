@@ -1,31 +1,19 @@
 include_recipe '../../cookbooks/centos/yum/recipe.rb'
-include_recipe '../../cookbooks/php/recipe.rb'
-include_recipe '../../cookbooks/git/recipe.rb'
-include_recipe '../../cookbooks/vim/recipe.rb'
-include_recipe '../../cookbooks/rbenv/recipe.rb'
-include_recipe '../../cookbooks/nvm/recipe.rb'
-include_recipe '../../cookbooks/mysql/recipe.rb'
-include_recipe '../../cookbooks/java/recipe.rb'
+include_recipe '../../cookbooks/centos/php/recipe.rb'
+include_recipe '../../cookbooks/centos/mysql/recipe.rb'
+include_recipe '../../cookbooks/centos/java/recipe.rb'
+
+include_recipe '../../cookbooks/common/git/recipe.rb'
+include_recipe '../../cookbooks/common/vim/recipe.rb'
+include_recipe '../../cookbooks/common/rbenv/recipe.rb'
+include_recipe '../../cookbooks/common/nvm/recipe.rb'
 
 RBENV_ROOT = '/usr/local/rbenv'
 
-# zsh
-execute "chsh -s /bin/zsh #{node[:user]}"
-file "/home/#{node[:user]}/.zshrc" do
-  owner node[:user]
-  group node[:user]
-  mode '644'
-end
-
-file "/home/#{node[:user]}/.zshenv" do
-  owner node[:user]
-  group node[:user]
-  mode '644'
-end
-execute "append zshenv" do
+execute "append .bashrc" do
   command <<-EOS
-    echo 'export RBENV_ROOT=#{RBENV_ROOT}' >> /home/#{node[:user]}/.zshenv
-    echo 'export PATH="$RBENV_ROOT/bin:$PATH"' >> /home/#{node[:user]}/.zshenv
-    echo 'eval "$(rbenv init -)"' >> /home/#{node[:user]}/.zshenv
+    echo 'export RBENV_ROOT=#{RBENV_ROOT}' >> /home/#{node[:user]}/.bashrc
+    echo 'export PATH="$RBENV_ROOT/bin:$PATH"' >> /home/#{node[:user]}/.bashrc
+    echo 'eval "$(rbenv init -)"' >> /home/#{node[:user]}/.bashrc
   EOS
 end

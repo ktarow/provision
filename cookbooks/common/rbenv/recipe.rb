@@ -6,7 +6,7 @@ PLUGINS = {
   'rbenv-gem-rehash' => 'https://github.com/sstephenson/rbenv-gem-rehash.git'
 }
 
-RUBY='2.3.0'
+RUBY='2.3.1'
 
 git "#{RBENV_ROOT}" do
   repository 'https://github.com/sstephenson/rbenv.git' 

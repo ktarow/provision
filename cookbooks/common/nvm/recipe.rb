@@ -30,7 +30,7 @@ execute 'install node' do
 end
 
 PACkAGES.each do |pkg|
-  execute "npm install -g #{pkg}" do
+  execute ". /usr/local/nvm/nvm.sh; npm install -g #{pkg}" do
     not_if "test -d /usr/local/nvm/versions/node/#{VERSION}/lib/node_modules/#{pkg}"
   end
 end

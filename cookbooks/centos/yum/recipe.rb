@@ -33,6 +33,4 @@ YUM_GROUP_PACKAGES.each do |pkg|
   execute "yum groupinstall -y #{pkg}"
 end
 
-YUM_PACKAGES.each do |pkg|
-  execute "yum install -y --enablerepo=epel #{pkg}"
-end
+execute "yum install -y --enablerepo=epel #{YUM_PACKAGES.join(" ")}"
