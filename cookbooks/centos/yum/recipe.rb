@@ -1,4 +1,3 @@
-# yum
 YUM_GROUP_PACKAGES = [
   'Development tools'
 ]
@@ -8,7 +7,6 @@ YUM_PACKAGES = [
   'vim',
   'tmux',
   'ncurses-devel',
-  'zsh',
   'curl-devel',
   'expat-devel',
   'gettext-devel',
@@ -26,11 +24,8 @@ execute 'add epel repository' do
     yum install -y epel-release
     sed -ri 's/enabled=1/enabled=0/' /etc/yum.repos.d/epel.repo
   EOS
-  not_if 'test -f /etc/yum.repos.d/epel.repo'
+  not_if '[ -e /etc/yum.repos.d/epel.repo ]'
 end
 
-YUM_GROUP_PACKAGES.each do |pkg|
-  execute "yum groupinstall -y #{pkg}"
-end
-
+execute "yum groupinstall -y #{YUM_GROUP_PACKAGES.join(" ")}"
 execute "yum install -y --enablerepo=epel #{YUM_PACKAGES.join(" ")}"

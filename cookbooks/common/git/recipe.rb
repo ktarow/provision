@@ -1,7 +1,7 @@
 # git
 git '/usr/local/src/git' do
   repository 'git://git.kernel.org/pub/scm/git/git.git'
-  not_if 'test -d /usr/local/src/git'
+  not_if '[ -d /usr/local/src/git ]'
 end
 
 execute 'install git' do

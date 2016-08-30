@@ -1,7 +1,7 @@
 # vim
 git '/usr/local/src/vim' do
   repository 'https://github.com/vim/vim.git'
-  not_if 'test -d /usr/local/src/vim'
+  not_if '[ -d /usr/local/src/vim ]'
 end
 execute 'install vim' do
   command <<-EOS

@@ -9,11 +9,11 @@ execute "append path" do
     echo 'export GOROOT=#{GOROOT}' >> /etc/profile.d/go.sh
     echo 'export PATH="$GOROOT/bin:$PATH"' >> /etc/profile.d/go.sh
   EOS
-  not_if "test -f /etc/profile.d/go.sh"
+  not_if "[ -e /etc/profile.d/go.sh ]"
 end
 
 execute "curl #{URI} -o /tmp/#{FILENAME}" do
-  not_if "test -d /tmp/#{FILENAME}"
+  not_if "[ -d /tmp/#{FILENAME} ]"
 end
 
 execute "tar xzf /tmp/#{FILENAME} -C /opt"

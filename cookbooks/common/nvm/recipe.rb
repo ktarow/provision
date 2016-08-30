@@ -13,11 +13,11 @@ PACkAGES = [
 
 git '/usr/local/nvm' do
   repository 'https://github.com/creationix/nvm.git'
-  not_if 'test -d /usr/local/nvm'
+  not_if '[ -d /usr/local/nvm ]'
 end
 
 remote_file '/etc/profile.d/nvm.sh' do
-  not_if 'test -f /etc/profile.d/nvm.sh'
+  not_if '[ -e /etc/profile.d/nvm.sh ]'
 end
 execute 'install node' do
   command <<-EOS
@@ -31,7 +31,7 @@ end
 
 PACkAGES.each do |pkg|
   execute ". /usr/local/nvm/nvm.sh; npm install -g #{pkg}" do
-    not_if "test -d /usr/local/nvm/versions/node/#{VERSION}/lib/node_modules/#{pkg}"
+    not_if "[ -d /usr/local/nvm/versions/node/#{VERSION}/lib/node_modules/#{pkg} ]"
   end
 end
 
