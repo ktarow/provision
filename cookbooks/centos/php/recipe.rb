@@ -18,7 +18,7 @@ PACKAGES = [
 ]
 
 case node[:platform_version]
-when '6.8'
+when /6\..+/
   execute 'add remi repository' do
     command <<-EOS
       rpm -ivh http://rpms.famillecollet.com/enterprise/remi-release-6.rpm
@@ -27,7 +27,7 @@ when '6.8'
     not_if '[ -e /etc/yum.repos.d/remi-safe.repo ]'
     not_if '[ -e /etc/yum.repos.d/remi-php70.repo ]'
   end
-when '7.2'
+when /7\..+/
   execute 'add remi repository' do
     command <<-EOS
       rpm -ivh http://rpms.famillecollet.com/enterprise/remi-release-7.rpm
