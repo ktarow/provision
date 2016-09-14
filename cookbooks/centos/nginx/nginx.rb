@@ -5,7 +5,7 @@ execute "rpm -ivh #{NGINX}" do
 end
 
 execute "yum install --enablerepo=nginx -y nginx" do
-  not_if "yum list installed | grep nginx"
+  only_if "yum list installed | grep nginx"
 end
 
 execute "copy original files" do
