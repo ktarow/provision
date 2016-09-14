@@ -1,6 +1,6 @@
 REDIS_PATH="http://download.redis.io/releases/redis-3.2.3.tar.gz"
 
-execute "curl #{REDIS_PATH} -O /tmp/redis.tar.gz"
+execute "curl #{REDIS_PATH} -o /tmp/redis.tar.gz"
 execute "tar xzf /tmp/redis.tar.gz -C /opt/redis"
 execute "install" do
   command <<-EOS
