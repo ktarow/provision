@@ -15,7 +15,7 @@ package 'remove maria*' do
 end
 
 case node[:platform_version]
-when '6.8'
+when /6\..+/
   execute "install rpm" do
     command <<-EOS
     yum install -y #{EL6}
@@ -23,7 +23,7 @@ when '6.8'
     EOS
     not_if "yum list installed | grep -E mysql[0-9]{2}-community-release"
   end
-when '7.2'
+when /7\..+/
   execute "install rpm" do
     command <<-EOS
     yum install -y #{EL7}
