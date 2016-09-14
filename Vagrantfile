@@ -1,5 +1,5 @@
 Vagrant.configure(2) do |config|
-  config.vm.box = "bento/centos-7.1"
+  config.vm.box = "bento/ubuntu-16.04"
 
   # config.vm.box_check_update = false
   config.vm.network "forwarded_port", guest: 80, host: 8080
@@ -16,9 +16,10 @@ Vagrant.configure(2) do |config|
   # config.push.define "atlas" do |push|
   #   push.app = "YOUR_ATLAS_USERNAME/YOUR_APPLICATION_NAME"
   # end
-  config.vm.provision :itamae do |config|
-    config.sudo = true
-    config.recipes = ['./roles/centos7/recipe.rb']
-    config.json = './node.json'
-  end
+  #config.vm.provision :itamae do |config|
+  #  config.sudo = true
+  #  config.recipes = ['./roles/centos7/recipe.rb']
+  #  config.json = './node.json'
+  #end
+  config.ssh.insert_key = false
 end
