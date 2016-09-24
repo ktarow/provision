@@ -1,32 +1,26 @@
 # role osx clean install
 
 BREW_PACKAGES = [
-  'vim --override-system-vi --with-lua',
+  'vim --override-system-vi --with-lua --with-python3',
   'zsh',
   'tmux',
-  'brew-cask',
   'weechat'
 ]
 
 BREW_CASK_PACKAGES = [
-  'dropbox',
-  'duet',
-  'intellij-idea-ce',
   'iterm2',
   'karabiner',
   'slack',
-  'skype',
   'sophos-anti-virus-home-edition',
   'virtualbox',
   'vagrant',
   'alfred',
   'shiftit',
-  'google-hangouts',
   'vlc'
 ]
 
 BREW_TAP = [
-  'caskroom/versions'
+  'caskroom/cask'
 ]
 
 execute 'ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"' do
@@ -51,7 +45,6 @@ execute 'Change a login shell' do
   command <<-EOS
     sudo sh -c "echo '/usr/local/bin/zsh' >> /etc/shells"
     chsh -s /usr/local/bin/zsh
-    echo 'export HOMEBREW_CASK_OPTS="--appdir=/Applications"' > #{ENV['HOME']}/.zshrc   
   EOS
 
   not_if 'grep "/usr/local/bin/zsh" /etc/shells'
@@ -66,10 +59,4 @@ execute 'for alfred' do
     brew cask alfred link
   EOS
   only_if 'test -d /opt/homebrew-cask/Caskroom/alfred'
-end
-
-git "#{ENV['HOME']}/dotfiles" do
-  repository 'git@github.com:ktarow/dotfiles'
-
-  not_if "test -d '#{ENV['HOME']}/dotfiles'"
 end
