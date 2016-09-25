@@ -11,7 +11,6 @@ BREW_CASK_PACKAGES = [
   'iterm2',
   'karabiner',
   'slack',
-  'sophos-anti-virus-home-edition',
   'virtualbox',
   'vagrant',
   'alfred',
