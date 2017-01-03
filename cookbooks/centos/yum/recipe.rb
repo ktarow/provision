@@ -14,7 +14,10 @@ YUM_PACKAGES = [
   'zlib-devel',
   'readline-devel',
   'perl-ExtUtils-MakeMaker',
-  'znc'
+  'znc',
+  'lua',
+  'lua-devel',
+  'ruby-devel'
 ]
 
 execute 'yum -y update'
