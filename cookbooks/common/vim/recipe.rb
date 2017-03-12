@@ -6,7 +6,13 @@ end
 execute 'install vim' do
   command <<-EOS
     cd /usr/local/src/vim/src
-    make && make install
+    ./configure \
+      --enable-luainterp=yes \
+      --enable-python3interp=yes \
+      --enable-rubyinterp=yes \
+      --enable-xim
+    make
+    make install
   EOS
-  not_if 'vim --version | grep 7.4'
+  not_if 'vim --version | grep 8.0'
 end
