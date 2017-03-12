@@ -4,7 +4,7 @@ This repository is provision for my envirionments by itamae.
 
 # Environment
 - Ruby
-  - 2.3.1
+  - 2.4.0
 
 # Usage
 
